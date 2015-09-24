@@ -1,0 +1,35 @@
+extends _layouts/base
+include _modules/link/link
+block content
+  .container
+    .yeogurt-info
+      h1 Welcome to Dashboard!
+        p
+          | Take a look at the
+          | #[+link({href:'https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---', text: ''})]
+          | and start mixing up something awesome.
+      p
+        img.logo(src="images/yeogurt-swirl.png", width="75px")
+        img.logo(src="images/yeogurt-swirl.png", width="75px")
+        ul
+          li test item de liste
+          li test item de liste
+          li test item de liste
+          li test item de liste
+          li test item de liste
+        br
+        - for (var x = 0; x < 3; x++)
+        li item
+        pre.
+          test bloc de code
+        section.active.
+          test de section active
+      .test(data='test')
+      h2#h2 Mon texte
+      #boo.
+        eleme id boo
+      br
+      br
+      br
+      br
+  code.version v1.3.2
