@@ -11,6 +11,7 @@ import wrench from 'wrench';
 // Load all gulp plugins based on their names
 // EX: gulp-copy -> copy
 const plugins = gulpLoadPlugins();
+
 // Create karma server
 const karma = require('karma').server;
 
