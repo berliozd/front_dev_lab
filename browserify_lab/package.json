@@ -1,0 +1,12 @@
+{
+  "name": "FindSuperman",
+  "version": "0.0.1",
+  "author": "Didier Berlioz",
+  "description": "Code designed to find the elusive red blue blur",
+  "dependencies": {
+    "underscore": "1.6.x"
+  },
+  "devDependencies": {
+    "browserify": "latest"
+  }
+}
