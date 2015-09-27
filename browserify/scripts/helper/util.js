@@ -2,20 +2,21 @@
  * Created by Berlioz on 27/09/2015.
  */
 
-define(function () {
+
+module.exports = function () {
   //Do setup work here
   this.color = 'blue';
 
   return {
     size: "unisize",
-    display : function () {
+    display: function () {
       console.log('dispddddddddlaying ' + color);
     },
-    hide : function() {
+    hide: function () {
       console.log('hiding 1');
     },
-    close : function() {
+    close: function () {
       console.log('closing 1');
     }
   }
-});
+}();

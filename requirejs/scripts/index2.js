@@ -1,11 +1,10 @@
 /**
  * Created by Berlioz on 27/09/2015.
  */
-requirejs(["helper/util", "helper/connection"], function() {
-  app.util.display();
-  app.util.hide();
-  app.connection.open();
-  app.connection.close();
+requirejs(["helper/util", "helper/service"], function(util, service) {
+  util.display();
+  util.hide();
+  service.call();
   //This function is called when scripts/helper/util.js is loaded.
   //If util.js calls define(), then this function is not fired until
   //util's dependencies have loaded, and the util argument will hold

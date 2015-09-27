@@ -1,0 +1,9 @@
+{
+  "name": "Modular_js_with_browserify",
+  "version": "0.0.1",
+  "author": "Didier Berlioz",
+  "description": "",
+  "devDependencies": {
+    "browserify": "latest"
+  }
+}

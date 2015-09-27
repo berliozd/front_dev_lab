@@ -2,17 +2,17 @@
  * Created by Berlioz on 27/09/2015.
  */
 
-define (function () {
+module.exports = function () {
   this.dbip = '1988.22.33.33';
 
   return {
-    database_ip : dbip,
-    open : function() {
+    database_ip: dbip,
+    open: function () {
       console.log('---- opening connection to ' + dbip);
     },
-    close : function() {
+    close: function () {
       console.log('closing connection to ' + db);
     }
   }
 
-});
+}();

@@ -1,0 +1,1 @@
+define("helper/util",[],function(){return this.color="blue",{size:"unisize",display:function(){console.log("dispddddddddlaying "+color)},hide:function(){console.log("hiding 1")},close:function(){console.log("closing 1")}}}),requirejs(["helper/util"],function(e){e.display(),e.hide()}),define("index",function(){});
