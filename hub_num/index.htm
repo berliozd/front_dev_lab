@@ -31,251 +31,7 @@
     <link rel="icon" type="image/png" sizes="16x16"
           href="https://www.dev.docapost.io/dashboard/assets/images/favicon/favicon-16x16.png">
 
-    <script>
-        /*<![CDATA[*/
-        var APP = (function () {
-            return {
-                // Application context
-                ctxPath: '/dashboard',
-
-                // Message d'information ou d'erreur
-                message: '',
-
-                // Type de message (information, erreur, warning...)
-                messageType: ''
-            };
-        })();
-        /*]]>*/
-    </script>
-    <script>
-        /*<![CDATA[*/
-        I18N = (function () {
-            return {
-                general: {
-                    addEmail: 'Ajouter un utilisateur',
-                    addValidEmail: 'Ajouter un email valide',
-                    share: 'Partager',
-                    okMsg: 'OK',
-                    cancelMsg: 'Annuler',
-                    save: 'Sauvegarder',
-                    tooLongTextError: 'Une erreur s\'est produite pendant la cr\xE9ation, veuillez v\xE9rifier votre saisi.',
-                    technicalError: 'Une erreur technique est survenue. Veuillez nous excuser pour le d\xE9sagr\xE9ment. Si l\'erreur persiste, vous pouvez envoyer un mail aux \xE9quipes de support.'
-                },
-                dataviz: {
-                    noData: 'Pas de donn\xE9es'
-                },
-                page: {
-                    dashboard: {
-                        editableMode: 'Mode edition',
-                        editableModeActivated: 'Mode edition activ\xE9'
-                    },
-                    devices: {
-                        filterPartnerEmpty: 'Vous n\'avez configur\xE9 aucun objet de ce partenaire.',
-                        filterVirtualEmpty: 'Vous n\'avez configur\xE9 aucune donn\xE9e manuelle.',
-                        addVirtualDevice: 'Ajouter une donn\xE9e manuelle',
-                        addPartner: 'Ajouter un partenaire',
-                        share: 'Partager',
-                        invalidFormat: 'Format invalide',
-                        retryMessage: 'R\xE9essayer',
-                        userHasAlreadyAccessToThisDevice: 'L\'utilisateur avec l\'email {0} a d\xE9ja acc\xE8s \xE0 ce device.',
-                        confirmationEmailHasBeenSent: 'Un email a \xE9t\xE9 envoy\xE9 \xE0 {0} pour confirmation.',
-                        errorOccuredWhileSharingDevice: 'Une erreur technique est survenue lors du partage.',
-                        resetPeripheriqueValue: 'Votre peripherique a \xE9t\xE9 r\xE9initialis\xE9.',
-                        deletePeripherique: 'Suppression d\'un objet',
-                        deletePeripheriqueVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer l\'objet {name} ?',
-                        deleteDatumVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer toutes les donn\xE9es pour l\'objet {name} ?',
-                        deleteShareVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le partage de l\'objet {name} ?',
-                        deleteShareMessage: 'Suppression du partage d\'un objet',
-                        invalidUser: 'ne correspond \xE0 aucun utilisateur du hub num\xE9rique !',
-                        deletedDevice: 'Votre p\xE9riph\xE9rique a \xE9t\xE9 supprim\xE9.',
-                        deletedDeviceFailed: 'une erreur technique est survenue.',
-                        deletedDeviceSuccess: '??devices.suppressed.device.success_fr??',
-                        failToCancelSharing: 'Echec de suppression du partage effectu\xE9 avec succ\xE8s.',
-                        faildedToModifyName: 'Nous sommes d\xE9sol\xE9s une erreur est survenue.',
-                        tutoTitle: 'Pour appairer la tablette Archos et tous les objets qui lui sont d\xE9j\xE0 rattach\xE9s vous devez:',
-                        tuto0: 'Allumer la tablette Archos',
-                        tuto1: 'Ouvrir l\'application Smart Home',
-                        tuto2: 'Dans le coin haut \xE0 droite, une notification \"Non connect\xE9 \xE0 la Poste\" appara\xEEt si vous n\'avez jamais r\xE9alis\xE9 l\'appairage. Cliquer sur la notification, elle passe \xE0 \"Connect\xE9\"',
-                        tuto3: 'Tous les objets dont vous disposiez sur la tablette sont d\xE9sormais pr\xE9sents sur le Hub',
-                        tuto4: 'Si vous n\'aviez pas encore d\'objets sur la tablette ou si vous souhaitez en ajouter de nouveau, ajoutez-les en suivant la proc\xE9dure d\xE9crite par Archos. Ils appara\xEEtront au fur et \xE0 mesure sur le Hub sans manipulation suppl\xE9mentaire de votre part'
-                    },
-                    scripting: {
-                        modifyTitle: 'Modification de votre sc\xE9nario',
-                        deleteScriptingVerificationMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
-                        scriptingEmpty: 'Vous n\'avez configur\xE9 aucun sc\xE9nario de ce type.',
-                        deleteScriptMsg: 'Suppression d\'un sc\xE9nario',
-                        deleteScriptVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
-                        updateAsBlocklyModalContent: 'Lors de l\'enregistrement votre sc\xE9nario sera transform\xE9 en sc\xE9nario expert. Cette op\xE9ration est irr\xE9versible: souhaitez-vous continuer?',
-                        updateAsBlocklyModalTitle: 'Modification d\'un sc\xE9nario en mode expert',
-                        blocklyless: {
-                            condition: {
-                                vu: 'Simplement re\xE7ue',
-                                gt: 'Sup\xE9rieure \xE0',
-                                lt: 'Inf\xE9rieure \xE0',
-                                eq: 'Egale \xE0',
-                                neq: 'Diff\xE9rente de'
-                            },
-                            at: '\xE0',
-                            randomScenario: 'Sc\xE9nario',
-                            current: 'Etape actuelle :',
-                            pagination: 'Pagination',
-                            finish: 'Sauvegarder',
-                            next: 'Suivant',
-                            previous: 'Pr\xE9c\xE9dent',
-                            loading: 'Chargement',
-                            wellSavedScript: 'Votre script a bien \xE9t\xE9 enregistr\xE9',
-                            failedToSavedScript: 'Une erreur est survenue lors de l\'enregistrement. Si l\'erreur persiste, merci de contacter le support.',
-                            hoursLabel: 'Heures (par d\xE9faut 12 h)',
-                            minutesLabel: 'Minutes (par d\xE9faut 0 min)',
-                            turnOn: 'Mettre en marche',
-                            turnOff: 'Eteindre',
-                            noActionneurAvailable: 'Option disponible apr\xE8s l\'ajout d\'un objet actionnable',
-                            noMobileAvailable: 'Option disponible apr\xE8s l\'ajout d\'une application mobile',
-                            noDevices: 'Vous devez ajouter un objet \xE0 votre dashboard pour r\xE9aliser ce type de sc\xE9nario',
-                            chooseDevice: 'S\xE9lectionner le capteur',
-                            functions: 'Fonction',
-                            comparators: 'Comparaison',
-                            value: 'Valeur'
-                        }
-                    }
-                },
-
-                util: {},
-                datatype: {
-                    unit: {
-                        WATT: 'watt',
-                        ON_OFF: '',
-                        MM: 'mm',
-                        CELSIUS: '\xB0C',
-                        PERCENT: '%',
-                        KG: 'kg',
-                        STEP: 'pas',
-                        STEPS: 'pas',
-                        FLOORS: '\xE9tage(s)',
-                        LUX: 'lux',
-                        MIN_1: 'bpm',
-                        PPM: 'pmm',
-                        METER: 'm',
-                        MMHG: 'mmHg',
-                        DB: 'dB',
-                        MB: 'mbar',
-                        KG_M2: 'kg/m\xB2',
-                        HOUR: 'h',
-                        CM: 'cm'
-                    },
-                    value: {
-                        state: {
-                            ON: 'ON',
-                            OFF: 'OFF',
-                            EVENT_0: 'Sorti',
-                            EVENT_1: 'Entr\xE9',
-                            MOTION_0: 'Immobile',
-                            MOTION_1: 'Mouvement',
-                            MAGNET_0: 'Ouvert',
-                            MAGNET_1: 'Ferm\xE9',
-                            PRESENCE_0: 'Absence',
-                            PRESENCE_1: 'Pr\xE9sence',
-                            SMOKE_0: 'Pas de fum\xE9e',
-                            SMOKE_1: 'Fum\xE9e',
-                            UNPLUGGED_0: 'Raccroch\xE9',
-                            UNPLUGGED_1: 'D\xE9croch\xE9',
-                            DIRTINESS_0: 'Normal',
-                            DIRTINESS_1: 'Obstru\xE9',
-                            TEST_0: '-',
-                            TEST_1: 'TEST',
-                            SWITCH_0: 'OFF',
-                            SWITCH_1: 'ON',
-                            FULL_BRIGHTNESS: 'Luminosit\xE9 maximum',
-                            DAYLIGHT: 'Lumi\xE8re du jour',
-                            DIMLIGHT: 'Lumi\xE8re faible',
-                            TWILIGHT: 'Cr\xE9puscule',
-                            DARKNESS: 'obscurit\xE9'
-                        }
-                    },
-                    label: {
-                        HEIGHT: 'Hauteur',
-                        BODYHEIGHT: 'Taille',
-                        HUMIDITY: 'Humidit\xE9',
-                        NOISE: 'Bruit',
-                        AIR_QUALITY: 'Qualit\xE9 de l\'air',
-                        FAT_RATIO: 'Pourcentage de graisse',
-                        HEART_RATE: 'Fr\xE9quence cardique',
-                        STEP: 'Nombre de pas',
-                        STATE: 'Etat',
-                        WEIGHT: 'Poids',
-                        BMI: 'Indice de masse corporelle',
-                        DIASTOLIC_BP: 'Pression diastolique',
-                        FAT_FREE_MASS: 'Masse sans graisse',
-                        DISTANCE: 'Distance',
-                        PROCESSOR_CHARGE: 'Charge processeur',
-                        IPC: 'IPC',
-                        CO: 'CO',
-                        TEMPERATURE: 'Temp\xE9rature',
-                        PRESSURE: 'Pression atmosph\xE9rique',
-                        SP02: 'SP02',
-                        SYSTOLIC_BP: 'Systolique',
-                        PLUVIOMETRY: 'Pluviom\xE9trie',
-                        BRIGHTNESS: 'Luminosit\xE9',
-                        NB_FLOORS: 'Nombre d\'\xE9tages',
-                        FAT_MASS_WEIGHT: 'Poids en graisse',
-                        CO2: 'CO2',
-                        BOX: 'Texte',
-                        BATTERY: 'Batterie',
-                        PICTUREE: 'Image',
-                        VIDEO: 'Image',
-                        BODYWEIGHT: 'Poids de corps',
-                        DURATION: 'Dur\xE9e',
-                        PRESENCE: 'Pr\xE9sence',
-                        SWITCHONOFF: 'Interrupteur',
-                        SMOKE: 'Fum\xE9e',
-                        UNPLUGGED: 'D\xE9croch\xE9',
-                        DIRTINESS: 'Obstru\xE9',
-                        TEST: 'Test',
-                        VOC: 'Compos\xE9s organiques volatiles'
-                    }
-                }
-            }
-        })();
-        console.log(I18N);
-        /*]]>*/
-    </script>
-
-    <script>try {
-        for (var lastpass_iter = 0; lastpass_iter < document.forms.length; lastpass_iter++) {
-            var lastpass_f = document.forms[lastpass_iter];
-            if (typeof(lastpass_f.lpsubmitorig) == "undefined") {
-                if (typeof(lastpass_f.submit) == "function") {
-                    lastpass_f.lpsubmitorig = lastpass_f.submit;
-                    lastpass_f.submit = function () {
-                        var form = this;
-                        try {
-                            if (document.documentElement && 'createEvent' in document) {
-                                var forms = document.getElementsByTagName('form');
-                                for (var i = 0; i < forms.length; ++i)                if (forms[i] == form) {
-                                    var element = document.createElement('lpformsubmitdataelement');
-                                    element.setAttribute('formnum', i);
-                                    element.setAttribute('from', 'submithook');
-                                    document.documentElement.appendChild(element);
-                                    var evt = document.createEvent('Events');
-                                    evt.initEvent('lpformsubmit', true, false);
-                                    element.dispatchEvent(evt);
-                                    break;
-                                }
-                            }
-                        } catch (e) {
-                        }
-                        try {
-                            form.lpsubmitorig();
-                        } catch (e) {
-                        }
-                    }
-                }
-            }
-        }
-    } catch (e) {
-    }</script>
 </head>
-<!-- Call the onLoad of the loaded page Controller, then onLoad of the generic pageController -->
 
 <body>
 <header id="menu" class="header mm-menu mm-widescreen mm-effect-slide mm-offcanvas"><h1 class="logo">
@@ -315,6 +71,251 @@
     });
     /*]]>*/
 </script>
+
+<script>
+  /*<![CDATA[*/
+  var APP = (function () {
+    return {
+      // Application context
+      ctxPath: '/dashboard',
+
+      // Message d'information ou d'erreur
+      message: '',
+
+      // Type de message (information, erreur, warning...)
+      messageType: ''
+    };
+  })();
+  /*]]>*/
+</script>
+
+<script>
+  /*<![CDATA[*/
+  I18N = (function () {
+    return {
+      general: {
+        addEmail: 'Ajouter un utilisateur',
+        addValidEmail: 'Ajouter un email valide',
+        share: 'Partager',
+        okMsg: 'OK',
+        cancelMsg: 'Annuler',
+        save: 'Sauvegarder',
+        tooLongTextError: 'Une erreur s\'est produite pendant la cr\xE9ation, veuillez v\xE9rifier votre saisi.',
+        technicalError: 'Une erreur technique est survenue. Veuillez nous excuser pour le d\xE9sagr\xE9ment. Si l\'erreur persiste, vous pouvez envoyer un mail aux \xE9quipes de support.'
+      },
+      dataviz: {
+        noData: 'Pas de donn\xE9es'
+      },
+      page: {
+        dashboard: {
+          editableMode: 'Mode edition',
+          editableModeActivated: 'Mode edition activ\xE9'
+        },
+        devices: {
+          filterPartnerEmpty: 'Vous n\'avez configur\xE9 aucun objet de ce partenaire.',
+          filterVirtualEmpty: 'Vous n\'avez configur\xE9 aucune donn\xE9e manuelle.',
+          addVirtualDevice: 'Ajouter une donn\xE9e manuelle',
+          addPartner: 'Ajouter un partenaire',
+          share: 'Partager',
+          invalidFormat: 'Format invalide',
+          retryMessage: 'R\xE9essayer',
+          userHasAlreadyAccessToThisDevice: 'L\'utilisateur avec l\'email {0} a d\xE9ja acc\xE8s \xE0 ce device.',
+          confirmationEmailHasBeenSent: 'Un email a \xE9t\xE9 envoy\xE9 \xE0 {0} pour confirmation.',
+          errorOccuredWhileSharingDevice: 'Une erreur technique est survenue lors du partage.',
+          resetPeripheriqueValue: 'Votre peripherique a \xE9t\xE9 r\xE9initialis\xE9.',
+          deletePeripherique: 'Suppression d\'un objet',
+          deletePeripheriqueVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer l\'objet {name} ?',
+          deleteDatumVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer toutes les donn\xE9es pour l\'objet {name} ?',
+          deleteShareVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le partage de l\'objet {name} ?',
+          deleteShareMessage: 'Suppression du partage d\'un objet',
+          invalidUser: 'ne correspond \xE0 aucun utilisateur du hub num\xE9rique !',
+          deletedDevice: 'Votre p\xE9riph\xE9rique a \xE9t\xE9 supprim\xE9.',
+          deletedDeviceFailed: 'une erreur technique est survenue.',
+          deletedDeviceSuccess: '??devices.suppressed.device.success_fr??',
+          failToCancelSharing: 'Echec de suppression du partage effectu\xE9 avec succ\xE8s.',
+          faildedToModifyName: 'Nous sommes d\xE9sol\xE9s une erreur est survenue.',
+          tutoTitle: 'Pour appairer la tablette Archos et tous les objets qui lui sont d\xE9j\xE0 rattach\xE9s vous devez:',
+          tuto0: 'Allumer la tablette Archos',
+          tuto1: 'Ouvrir l\'application Smart Home',
+          tuto2: 'Dans le coin haut \xE0 droite, une notification \"Non connect\xE9 \xE0 la Poste\" appara\xEEt si vous n\'avez jamais r\xE9alis\xE9 l\'appairage. Cliquer sur la notification, elle passe \xE0 \"Connect\xE9\"',
+          tuto3: 'Tous les objets dont vous disposiez sur la tablette sont d\xE9sormais pr\xE9sents sur le Hub',
+          tuto4: 'Si vous n\'aviez pas encore d\'objets sur la tablette ou si vous souhaitez en ajouter de nouveau, ajoutez-les en suivant la proc\xE9dure d\xE9crite par Archos. Ils appara\xEEtront au fur et \xE0 mesure sur le Hub sans manipulation suppl\xE9mentaire de votre part'
+        },
+        scripting: {
+          modifyTitle: 'Modification de votre sc\xE9nario',
+          deleteScriptingVerificationMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
+          scriptingEmpty: 'Vous n\'avez configur\xE9 aucun sc\xE9nario de ce type.',
+          deleteScriptMsg: 'Suppression d\'un sc\xE9nario',
+          deleteScriptVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
+          updateAsBlocklyModalContent: 'Lors de l\'enregistrement votre sc\xE9nario sera transform\xE9 en sc\xE9nario expert. Cette op\xE9ration est irr\xE9versible: souhaitez-vous continuer?',
+          updateAsBlocklyModalTitle: 'Modification d\'un sc\xE9nario en mode expert',
+          blocklyless: {
+            condition: {
+              vu: 'Simplement re\xE7ue',
+              gt: 'Sup\xE9rieure \xE0',
+              lt: 'Inf\xE9rieure \xE0',
+              eq: 'Egale \xE0',
+              neq: 'Diff\xE9rente de'
+            },
+            at: '\xE0',
+            randomScenario: 'Sc\xE9nario',
+            current: 'Etape actuelle :',
+            pagination: 'Pagination',
+            finish: 'Sauvegarder',
+            next: 'Suivant',
+            previous: 'Pr\xE9c\xE9dent',
+            loading: 'Chargement',
+            wellSavedScript: 'Votre script a bien \xE9t\xE9 enregistr\xE9',
+            failedToSavedScript: 'Une erreur est survenue lors de l\'enregistrement. Si l\'erreur persiste, merci de contacter le support.',
+            hoursLabel: 'Heures (par d\xE9faut 12 h)',
+            minutesLabel: 'Minutes (par d\xE9faut 0 min)',
+            turnOn: 'Mettre en marche',
+            turnOff: 'Eteindre',
+            noActionneurAvailable: 'Option disponible apr\xE8s l\'ajout d\'un objet actionnable',
+            noMobileAvailable: 'Option disponible apr\xE8s l\'ajout d\'une application mobile',
+            noDevices: 'Vous devez ajouter un objet \xE0 votre dashboard pour r\xE9aliser ce type de sc\xE9nario',
+            chooseDevice: 'S\xE9lectionner le capteur',
+            functions: 'Fonction',
+            comparators: 'Comparaison',
+            value: 'Valeur'
+          }
+        }
+      },
+
+      util: {},
+      datatype: {
+        unit: {
+          WATT: 'watt',
+          ON_OFF: '',
+          MM: 'mm',
+          CELSIUS: '\xB0C',
+          PERCENT: '%',
+          KG: 'kg',
+          STEP: 'pas',
+          STEPS: 'pas',
+          FLOORS: '\xE9tage(s)',
+          LUX: 'lux',
+          MIN_1: 'bpm',
+          PPM: 'pmm',
+          METER: 'm',
+          MMHG: 'mmHg',
+          DB: 'dB',
+          MB: 'mbar',
+          KG_M2: 'kg/m\xB2',
+          HOUR: 'h',
+          CM: 'cm'
+        },
+        value: {
+          state: {
+            ON: 'ON',
+            OFF: 'OFF',
+            EVENT_0: 'Sorti',
+            EVENT_1: 'Entr\xE9',
+            MOTION_0: 'Immobile',
+            MOTION_1: 'Mouvement',
+            MAGNET_0: 'Ouvert',
+            MAGNET_1: 'Ferm\xE9',
+            PRESENCE_0: 'Absence',
+            PRESENCE_1: 'Pr\xE9sence',
+            SMOKE_0: 'Pas de fum\xE9e',
+            SMOKE_1: 'Fum\xE9e',
+            UNPLUGGED_0: 'Raccroch\xE9',
+            UNPLUGGED_1: 'D\xE9croch\xE9',
+            DIRTINESS_0: 'Normal',
+            DIRTINESS_1: 'Obstru\xE9',
+            TEST_0: '-',
+            TEST_1: 'TEST',
+            SWITCH_0: 'OFF',
+            SWITCH_1: 'ON',
+            FULL_BRIGHTNESS: 'Luminosit\xE9 maximum',
+            DAYLIGHT: 'Lumi\xE8re du jour',
+            DIMLIGHT: 'Lumi\xE8re faible',
+            TWILIGHT: 'Cr\xE9puscule',
+            DARKNESS: 'obscurit\xE9'
+          }
+        },
+        label: {
+          HEIGHT: 'Hauteur',
+          BODYHEIGHT: 'Taille',
+          HUMIDITY: 'Humidit\xE9',
+          NOISE: 'Bruit',
+          AIR_QUALITY: 'Qualit\xE9 de l\'air',
+          FAT_RATIO: 'Pourcentage de graisse',
+          HEART_RATE: 'Fr\xE9quence cardique',
+          STEP: 'Nombre de pas',
+          STATE: 'Etat',
+          WEIGHT: 'Poids',
+          BMI: 'Indice de masse corporelle',
+          DIASTOLIC_BP: 'Pression diastolique',
+          FAT_FREE_MASS: 'Masse sans graisse',
+          DISTANCE: 'Distance',
+          PROCESSOR_CHARGE: 'Charge processeur',
+          IPC: 'IPC',
+          CO: 'CO',
+          TEMPERATURE: 'Temp\xE9rature',
+          PRESSURE: 'Pression atmosph\xE9rique',
+          SP02: 'SP02',
+          SYSTOLIC_BP: 'Systolique',
+          PLUVIOMETRY: 'Pluviom\xE9trie',
+          BRIGHTNESS: 'Luminosit\xE9',
+          NB_FLOORS: 'Nombre d\'\xE9tages',
+          FAT_MASS_WEIGHT: 'Poids en graisse',
+          CO2: 'CO2',
+          BOX: 'Texte',
+          BATTERY: 'Batterie',
+          PICTUREE: 'Image',
+          VIDEO: 'Image',
+          BODYWEIGHT: 'Poids de corps',
+          DURATION: 'Dur\xE9e',
+          PRESENCE: 'Pr\xE9sence',
+          SWITCHONOFF: 'Interrupteur',
+          SMOKE: 'Fum\xE9e',
+          UNPLUGGED: 'D\xE9croch\xE9',
+          DIRTINESS: 'Obstru\xE9',
+          TEST: 'Test',
+          VOC: 'Compos\xE9s organiques volatiles'
+        }
+      }
+    }
+  })();
+  console.log(I18N);
+  /*]]>*/
+</script>
+
+<script>try {
+  for (var lastpass_iter = 0; lastpass_iter < document.forms.length; lastpass_iter++) {
+    var lastpass_f = document.forms[lastpass_iter];
+    if (typeof(lastpass_f.lpsubmitorig) == "undefined") {
+      if (typeof(lastpass_f.submit) == "function") {
+        lastpass_f.lpsubmitorig = lastpass_f.submit;
+        lastpass_f.submit = function () {
+          var form = this;
+          try {
+            if (document.documentElement && 'createEvent' in document) {
+              var forms = document.getElementsByTagName('form');
+              for (var i = 0; i < forms.length; ++i)                if (forms[i] == form) {
+                var element = document.createElement('lpformsubmitdataelement');
+                element.setAttribute('formnum', i);
+                element.setAttribute('from', 'submithook');
+                document.documentElement.appendChild(element);
+                var evt = document.createEvent('Events');
+                evt.initEvent('lpformsubmit', true, false);
+                element.dispatchEvent(evt);
+                break;
+              }
+            }
+          } catch (e) {
+          }
+          try {
+            form.lpsubmitorig();
+          } catch (e) {
+          }
+        }
+      }
+    }
+  }
+} catch (e) {
+}</script>
 <!-- We need to include header and main in the same DIV in case we want a footer fixed on bot -->
 <div class="mm-page mm-slideout" id="mm-0">
     <div id="main-wrapper">
