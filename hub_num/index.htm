@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- base href="https://www.dev.docapost.io/dashboard/script/beginner/modify/ddefc2b3-7764-482b-92a7-c23f83573ed1" -->
+    <title>HUB Numérique - Mes scénarios</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="_csrf" content="81e67192-4db0-4db4-aa8a-8fe3d992a361">
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="X-CSRF-TOKEN">
+
+    <link rel="stylesheet" href="files/common.css">
+
+
+    <script type="text/javascript" src="files/common.js"></script>
+    <script type="text/javascript" src="files/scripting.js"></script>
+    <script type="text/javascript"
+            src="files/scriptingBeginnerController.js"></script>
+    <script type="text/javascript"
+            src="files/scriptingController.js"></script>
+
+    <link rel="shortcut icon" href="https://www.dev.docapost.io/dashboard/assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" href="https://www.dev.docapost.io/dashboard/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="https://www.dev.docapost.io/dashboard/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="https://www.dev.docapost.io/dashboard/assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="https://www.dev.docapost.io/dashboard/assets/images/favicon/favicon-16x16.png">
+
+    <script>
+        /*<![CDATA[*/
+        var APP = (function () {
+            return {
+                // Application context
+                ctxPath: '/dashboard',
+
+                // Message d'information ou d'erreur
+                message: '',
+
+                // Type de message (information, erreur, warning...)
+                messageType: ''
+            };
+        })();
+        /*]]>*/
+    </script>
+    <script>
+        /*<![CDATA[*/
+        I18N = (function () {
+            return {
+                general: {
+                    addEmail: 'Ajouter un utilisateur',
+                    addValidEmail: 'Ajouter un email valide',
+                    share: 'Partager',
+                    okMsg: 'OK',
+                    cancelMsg: 'Annuler',
+                    save: 'Sauvegarder',
+                    tooLongTextError: 'Une erreur s\'est produite pendant la cr\xE9ation, veuillez v\xE9rifier votre saisi.',
+                    technicalError: 'Une erreur technique est survenue. Veuillez nous excuser pour le d\xE9sagr\xE9ment. Si l\'erreur persiste, vous pouvez envoyer un mail aux \xE9quipes de support.'
+                },
+                dataviz: {
+                    noData: 'Pas de donn\xE9es'
+                },
+                page: {
+                    dashboard: {
+                        editableMode: 'Mode edition',
+                        editableModeActivated: 'Mode edition activ\xE9'
+                    },
+                    devices: {
+                        filterPartnerEmpty: 'Vous n\'avez configur\xE9 aucun objet de ce partenaire.',
+                        filterVirtualEmpty: 'Vous n\'avez configur\xE9 aucune donn\xE9e manuelle.',
+                        addVirtualDevice: 'Ajouter une donn\xE9e manuelle',
+                        addPartner: 'Ajouter un partenaire',
+                        share: 'Partager',
+                        invalidFormat: 'Format invalide',
+                        retryMessage: 'R\xE9essayer',
+                        userHasAlreadyAccessToThisDevice: 'L\'utilisateur avec l\'email {0} a d\xE9ja acc\xE8s \xE0 ce device.',
+                        confirmationEmailHasBeenSent: 'Un email a \xE9t\xE9 envoy\xE9 \xE0 {0} pour confirmation.',
+                        errorOccuredWhileSharingDevice: 'Une erreur technique est survenue lors du partage.',
+                        resetPeripheriqueValue: 'Votre peripherique a \xE9t\xE9 r\xE9initialis\xE9.',
+                        deletePeripherique: 'Suppression d\'un objet',
+                        deletePeripheriqueVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer l\'objet {name} ?',
+                        deleteDatumVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer toutes les donn\xE9es pour l\'objet {name} ?',
+                        deleteShareVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le partage de l\'objet {name} ?',
+                        deleteShareMessage: 'Suppression du partage d\'un objet',
+                        invalidUser: 'ne correspond \xE0 aucun utilisateur du hub num\xE9rique !',
+                        deletedDevice: 'Votre p\xE9riph\xE9rique a \xE9t\xE9 supprim\xE9.',
+                        deletedDeviceFailed: 'une erreur technique est survenue.',
+                        deletedDeviceSuccess: '??devices.suppressed.device.success_fr??',
+                        failToCancelSharing: 'Echec de suppression du partage effectu\xE9 avec succ\xE8s.',
+                        faildedToModifyName: 'Nous sommes d\xE9sol\xE9s une erreur est survenue.',
+                        tutoTitle: 'Pour appairer la tablette Archos et tous les objets qui lui sont d\xE9j\xE0 rattach\xE9s vous devez:',
+                        tuto0: 'Allumer la tablette Archos',
+                        tuto1: 'Ouvrir l\'application Smart Home',
+                        tuto2: 'Dans le coin haut \xE0 droite, une notification \"Non connect\xE9 \xE0 la Poste\" appara\xEEt si vous n\'avez jamais r\xE9alis\xE9 l\'appairage. Cliquer sur la notification, elle passe \xE0 \"Connect\xE9\"',
+                        tuto3: 'Tous les objets dont vous disposiez sur la tablette sont d\xE9sormais pr\xE9sents sur le Hub',
+                        tuto4: 'Si vous n\'aviez pas encore d\'objets sur la tablette ou si vous souhaitez en ajouter de nouveau, ajoutez-les en suivant la proc\xE9dure d\xE9crite par Archos. Ils appara\xEEtront au fur et \xE0 mesure sur le Hub sans manipulation suppl\xE9mentaire de votre part'
+                    },
+                    scripting: {
+                        modifyTitle: 'Modification de votre sc\xE9nario',
+                        deleteScriptingVerificationMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
+                        scriptingEmpty: 'Vous n\'avez configur\xE9 aucun sc\xE9nario de ce type.',
+                        deleteScriptMsg: 'Suppression d\'un sc\xE9nario',
+                        deleteScriptVerifMessage: 'Etes-vous s\xFBr de vouloir supprimer le sc\xE9nario {name} ?',
+                        updateAsBlocklyModalContent: 'Lors de l\'enregistrement votre sc\xE9nario sera transform\xE9 en sc\xE9nario expert. Cette op\xE9ration est irr\xE9versible: souhaitez-vous continuer?',
+                        updateAsBlocklyModalTitle: 'Modification d\'un sc\xE9nario en mode expert',
+                        blocklyless: {
+                            condition: {
+                                vu: 'Simplement re\xE7ue',
+                                gt: 'Sup\xE9rieure \xE0',
+                                lt: 'Inf\xE9rieure \xE0',
+                                eq: 'Egale \xE0',
+                                neq: 'Diff\xE9rente de'
+                            },
+                            at: '\xE0',
+                            randomScenario: 'Sc\xE9nario',
+                            current: 'Etape actuelle :',
+                            pagination: 'Pagination',
+                            finish: 'Sauvegarder',
+                            next: 'Suivant',
+                            previous: 'Pr\xE9c\xE9dent',
+                            loading: 'Chargement',
+                            wellSavedScript: 'Votre script a bien \xE9t\xE9 enregistr\xE9',
+                            failedToSavedScript: 'Une erreur est survenue lors de l\'enregistrement. Si l\'erreur persiste, merci de contacter le support.',
+                            hoursLabel: 'Heures (par d\xE9faut 12 h)',
+                            minutesLabel: 'Minutes (par d\xE9faut 0 min)',
+                            turnOn: 'Mettre en marche',
+                            turnOff: 'Eteindre',
+                            noActionneurAvailable: 'Option disponible apr\xE8s l\'ajout d\'un objet actionnable',
+                            noMobileAvailable: 'Option disponible apr\xE8s l\'ajout d\'une application mobile',
+                            noDevices: 'Vous devez ajouter un objet \xE0 votre dashboard pour r\xE9aliser ce type de sc\xE9nario',
+                            chooseDevice: 'S\xE9lectionner le capteur',
+                            functions: 'Fonction',
+                            comparators: 'Comparaison',
+                            value: 'Valeur'
+                        }
+                    }
+                },
+
+                util: {},
+                datatype: {
+                    unit: {
+                        WATT: 'watt',
+                        ON_OFF: '',
+                        MM: 'mm',
+                        CELSIUS: '\xB0C',
+                        PERCENT: '%',
+                        KG: 'kg',
+                        STEP: 'pas',
+                        STEPS: 'pas',
+                        FLOORS: '\xE9tage(s)',
+                        LUX: 'lux',
+                        MIN_1: 'bpm',
+                        PPM: 'pmm',
+                        METER: 'm',
+                        MMHG: 'mmHg',
+                        DB: 'dB',
+                        MB: 'mbar',
+                        KG_M2: 'kg/m\xB2',
+                        HOUR: 'h',
+                        CM: 'cm'
+                    },
+                    value: {
+                        state: {
+                            ON: 'ON',
+                            OFF: 'OFF',
+                            EVENT_0: 'Sorti',
+                            EVENT_1: 'Entr\xE9',
+                            MOTION_0: 'Immobile',
+                            MOTION_1: 'Mouvement',
+                            MAGNET_0: 'Ouvert',
+                            MAGNET_1: 'Ferm\xE9',
+                            PRESENCE_0: 'Absence',
+                            PRESENCE_1: 'Pr\xE9sence',
+                            SMOKE_0: 'Pas de fum\xE9e',
+                            SMOKE_1: 'Fum\xE9e',
+                            UNPLUGGED_0: 'Raccroch\xE9',
+                            UNPLUGGED_1: 'D\xE9croch\xE9',
+                            DIRTINESS_0: 'Normal',
+                            DIRTINESS_1: 'Obstru\xE9',
+                            TEST_0: '-',
+                            TEST_1: 'TEST',
+                            SWITCH_0: 'OFF',
+                            SWITCH_1: 'ON',
+                            FULL_BRIGHTNESS: 'Luminosit\xE9 maximum',
+                            DAYLIGHT: 'Lumi\xE8re du jour',
+                            DIMLIGHT: 'Lumi\xE8re faible',
+                            TWILIGHT: 'Cr\xE9puscule',
+                            DARKNESS: 'obscurit\xE9'
+                        }
+                    },
+                    label: {
+                        HEIGHT: 'Hauteur',
+                        BODYHEIGHT: 'Taille',
+                        HUMIDITY: 'Humidit\xE9',
+                        NOISE: 'Bruit',
+                        AIR_QUALITY: 'Qualit\xE9 de l\'air',
+                        FAT_RATIO: 'Pourcentage de graisse',
+                        HEART_RATE: 'Fr\xE9quence cardique',
+                        STEP: 'Nombre de pas',
+                        STATE: 'Etat',
+                        WEIGHT: 'Poids',
+                        BMI: 'Indice de masse corporelle',
+                        DIASTOLIC_BP: 'Pression diastolique',
+                        FAT_FREE_MASS: 'Masse sans graisse',
+                        DISTANCE: 'Distance',
+                        PROCESSOR_CHARGE: 'Charge processeur',
+                        IPC: 'IPC',
+                        CO: 'CO',
+                        TEMPERATURE: 'Temp\xE9rature',
+                        PRESSURE: 'Pression atmosph\xE9rique',
+                        SP02: 'SP02',
+                        SYSTOLIC_BP: 'Systolique',
+                        PLUVIOMETRY: 'Pluviom\xE9trie',
+                        BRIGHTNESS: 'Luminosit\xE9',
+                        NB_FLOORS: 'Nombre d\'\xE9tages',
+                        FAT_MASS_WEIGHT: 'Poids en graisse',
+                        CO2: 'CO2',
+                        BOX: 'Texte',
+                        BATTERY: 'Batterie',
+                        PICTUREE: 'Image',
+                        VIDEO: 'Image',
+                        BODYWEIGHT: 'Poids de corps',
+                        DURATION: 'Dur\xE9e',
+                        PRESENCE: 'Pr\xE9sence',
+                        SWITCHONOFF: 'Interrupteur',
+                        SMOKE: 'Fum\xE9e',
+                        UNPLUGGED: 'D\xE9croch\xE9',
+                        DIRTINESS: 'Obstru\xE9',
+                        TEST: 'Test',
+                        VOC: 'Compos\xE9s organiques volatiles'
+                    }
+                }
+            }
+        })();
+        console.log(I18N);
+        /*]]>*/
+    </script>
+
+    <script>try {
+        for (var lastpass_iter = 0; lastpass_iter < document.forms.length; lastpass_iter++) {
+            var lastpass_f = document.forms[lastpass_iter];
+            if (typeof(lastpass_f.lpsubmitorig) == "undefined") {
+                if (typeof(lastpass_f.submit) == "function") {
+                    lastpass_f.lpsubmitorig = lastpass_f.submit;
+                    lastpass_f.submit = function () {
+                        var form = this;
+                        try {
+                            if (document.documentElement && 'createEvent' in document) {
+                                var forms = document.getElementsByTagName('form');
+                                for (var i = 0; i < forms.length; ++i)                if (forms[i] == form) {
+                                    var element = document.createElement('lpformsubmitdataelement');
+                                    element.setAttribute('formnum', i);
+                                    element.setAttribute('from', 'submithook');
+                                    document.documentElement.appendChild(element);
+                                    var evt = document.createEvent('Events');
+                                    evt.initEvent('lpformsubmit', true, false);
+                                    element.dispatchEvent(evt);
+                                    break;
+                                }
+                            }
+                        } catch (e) {
+                        }
+                        try {
+                            form.lpsubmitorig();
+                        } catch (e) {
+                        }
+                    }
+                }
+            }
+        }
+    } catch (e) {
+    }</script>
+</head>
+<!-- Call the onLoad of the loaded page Controller, then onLoad of the generic pageController -->
+
+<body>
+<header id="menu" class="header mm-menu mm-widescreen mm-effect-slide mm-offcanvas"><h1 class="logo">
+    <a href="#">
+        <img src="files/hub-logo.png" alt="Portail">
+    </a>
+</h1>
+    <nav>
+        <ul>
+            <li>
+                <a id="dashboardMenu" href="https://www.dev.docapost.io/dashboard/page/dashboard">
+                    <span class="fa flaticon-dashboard circle-bg"></span>
+                    <span>Mes données</span>
+                </a>
+            </li>
+            <li>
+                <a id="devicesMenu" href="https://www.dev.docapost.io/dashboard/page/devices">
+                    <span class="fa flaticon-objets circle-bg"></span>
+                    <span>Mes objets</span>
+                </a>
+            </li>
+            <li>
+                <a class="active" id="scriptingMenu" href="https://www.dev.docapost.io/dashboard/page/scripting">
+                    <span class="fa flaticon-scenario circle-bg"></span>
+                    <span>Mes scénarios</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<script>
+    /*<![CDATA[*/
+    // Call the onReady of the generic pageController THEN on the loaded page Controller
+    $(document).ready(function () {
+        Constants.CONTEXT_PATH = '/dashboard';
+        dashboard.scriptingBeginnerController.onReady();
+    });
+    /*]]>*/
+</script>
+<!-- We need to include header and main in the same DIV in case we want a footer fixed on bot -->
+<div class="mm-page mm-slideout" id="mm-0">
+    <div id="main-wrapper">
+        <!--     mm-slideout mm-widescreen mm-effect-slide mm-offcanvas -->
+        <div class="" id="main">
+
+
+            <div class="top">
+                <a class="menu-trigger fa fa-reorder"></a>
+
+                <div class="login pull-right">
+                    <span class="helloSir">Bienvenue sur votre tableau de bord, Didier</span>
+
+                    <form method="post" action="/dashboard/logout">
+
+                        <input name="_csrf" value="81e67192-4db0-4db4-aa8a-8fe3d992a361" type="hidden">
+
+                        <button type="submit" class="btnNoBg LoggedOut" title="Se déconnecter">
+                            <span class="fa fa-sign-out"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <section class="mainContainer">
+
+                <!-- PAGE CONTENT TITLE (always displayed) -->
+                <div class="row page-title">
+                    <h1>Modification de votre scénario<span class="loader-icon fa fa-spinner fa-spin"></span></h1>
+
+                </div>
+
+                <!-- STATUS MESSAGE (if displayed) -->
+                <div id="statusMessage" class="row">
+                    <div id="serverMessage">
+
+                    </div>
+
+
+                </div>
+
+                <!-- DYNAMIC CONTENT (always displayed) -->
+                <div>
+                    <input id="idScript" value="ddefc2b3-7764-482b-92a7-c23f83573ed1" type="hidden">
+                    <!-- CONTENT OF SELECTED MENU -->
+                    <div class="wizardWrapper">
+                        <div id="steps-uid-0" role="application" class="wizardContainer wizard clearfix">
+                            <div class="steps clearfix">
+                                <ul role="tablist">
+                                    <li aria-selected="true" aria-disabled="false" class="first current" role="tab"><a
+                                            id="steps-uid-0-t-0" href="#steps-uid-0-h-0"
+                                            aria-controls="steps-uid-0-p-0"><span class="current-info audible">Etape actuelle : </span><span
+                                            class="number">1</span> <span class="step-title">- Choix du scénario</span>
+                                    </a></li>
+                                    <li aria-disabled="true" class="disabled" role="tab"><a id="steps-uid-0-t-1"
+                                                                                            href="#steps-uid-0-h-1"
+                                                                                            aria-controls="steps-uid-0-p-1"><span
+                                            class="number">2</span>
+                                        <span class="step-title">- Condition d'exécution</span>
+                                    </a></li>
+                                    <li aria-disabled="true" class="disabled last" role="tab"><a id="steps-uid-0-t-2"
+                                                                                                 href="#steps-uid-0-h-2"
+                                                                                                 aria-controls="steps-uid-0-p-2"><span
+                                            class="number">3</span> <span class="step-title">- Ajout d'une action</span>
+                                    </a></li>
+                                </ul>
+                            </div>
+                            <div class="content clearfix">
+
+                                <!-- STEP 0 -->
+                                <h1 class="title current" tabindex="-1" id="steps-uid-0-h-0"><span class="step-title">- Choix du scénario</span>
+                                </h1>
+
+                                <div aria-hidden="false" class="body current" aria-labelledby="steps-uid-0-h-0"
+                                     role="tabpanel" id="steps-uid-0-p-0">
+                                    <form id="step1Form" class="row new-scenario-container">
+                                        <div class="form-group col-md-4">
+                                            <label for="scriptName" class="control-label title-label">Nom du
+                                                scénario</label>
+                                            <input id="scriptName" name="scriptName" required="required" maxlength="30"
+                                                   onchange="formUtils.resetValidation(this)" class="form-control"
+                                                   placeholder="Saisir le nom du scénario"
+                                                   oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner un nom de scénario','Le nom de scénario ne doit pas contenir de caractères spéciaux','NOT USED YET');"
+                                                   type="text">
+                                        </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3 class="over-grey-h3">Type du scénario</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 customRadioCBContainer">
+                                            <input checked="checked" id="cronTypeInput" value="cron"
+                                                   name="scriptTypeInput" type="radio">
+                                            <label id="cronTypeLabel" class="label-of-choice" for="cronTypeInput">
+                                                <span>Exécution régulière</span>
+                                                <span class="subtitle">Déclenchez une action tous les...</span>
+                                            </label>
+                                            <input id="regleTypeInput" value="regle" name="scriptTypeInput"
+                                                   type="radio">
+                                            <label id="regleTypeLabel" class="label-of-choice"
+                                                   for="regleTypeInput"><span>Exécution suite à un événement</span>
+                                                <span class="subtitle">Déclenchez une action dès que...</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 1 -->
+                                <h1 class="title" tabindex="-1" id="steps-uid-0-h-1">
+                                    <span class="step-title">- Condition d'exécution</span>
+                                </h1>
+
+                                <div aria-hidden="true" style="display: none;" class="body"
+                                     aria-labelledby="steps-uid-0-h-1" role="tabpanel" id="steps-uid-0-p-1">
+                                    <!-- REGLE STEP 1 -->
+                                    <div id="regleStep1Container" class="step1Container">
+                                        <div class="row">
+                                            <div class="col-xs-12 scriptNameLabel-container">
+                                                <h3 class="scriptNameLabel">[SCRIPT NAME]</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-xs-12">
+                                                <h3 class="over-grey-h3 control-label">Quand</h3>
+
+                                                <h3 id="chooseDeviceLabel"
+                                                    class="show-modal choose-device modalContentTitle">
+                                                    <a href="#">
+                                                        <span>Sélectionner le capteur</span>
+                                                        <span class="fa fa-angle-right viewMoreIcon"></span>
+                                                    </a>
+                                                </h3>
+
+                                                <!-- DEVICE SELECTION POPIN -->
+                                                <div id="chooseDeviceModal" class="mobileModalContainer">
+                                                    <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                        <h3 class="modalTitle">
+                                                            <span>Sélectionner le capteur</span>
+                                                            <span class="fa fa-times pull-right close-modal"></span>
+                                                        </h3>
+                                                    </div>
+                                                    <fieldset class="customRadioCBContainer selectDevices">
+                                                    </fieldset>
+                                                    <button class="btn btn-blocklyless validation">
+                                                        <h3>Valider</h3>
+                                                    </button>
+                                                </div>
+
+                                                <!-- !DEVICE SELECTION POPIN (mobileModalContainer) -->
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <h3 class="over-grey-h3 control-label">Condition</h3>
+
+                                                <h3 class="chooseConditionLabel show-modal choose-device modalContentTitle">
+                                                    <a href="#">
+                                                        <span>Choisir une condition</span>
+                                                        <span class="fa fa-angle-right viewMoreIcon"></span>
+                                                    </a>
+                                                </h3>
+
+                                                <!-- CONDITION SELECTION POPIN -->
+                                                <form id="chooseConditionModal" class="mobileModalContainer">
+                                                    <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                        <h3 class="modalTitle">
+                                                            <span>Choisir une condition</span>
+                                                            <span class="fa fa-times pull-right close-modal"></span>
+                                                        </h3>
+                                                    </div>
+                                                    <h3 class="over-grey-h3 control-label">Si la donnée du capteur
+                                                        est</h3>
+                                                    <fieldset class="customRadioCBContainer selectOperation">
+                                                        <input id="conditionVu" value="VU" name="condition"
+                                                               type="radio">
+                                                        <label for="conditionVu">
+                                                            <span id="conditionVuIcon"
+                                                                  class="fa fa-download conditionIcon"></span>
+                                                            <span>Simplement reçue</span>
+                                                        </label>
+                                                        <input id="conditionGt" value="GT" name="condition"
+                                                               type="radio">
+                                                        <label for="conditionGt">
+                                                            <span id="conditionGtIcon"
+                                                                  class="fa fa-angle-right conditionIcon"></span>
+                                                            <span>Supérieure à</span>
+                                                        </label>
+                                                        <input id="conditionLt" value="LT" name="condition"
+                                                               type="radio">
+                                                        <label for="conditionLt">
+                                                            <span id="conditionLtIcon"
+                                                                  class="fa fa-angle-left conditionIcon"></span>
+                                                            <span>Inférieure à</span>
+                                                        </label>
+                                                        <input id="conditionEq" value="EQ" name="condition"
+                                                               type="radio">
+                                                        <label for="conditionEq">
+                                                            <span id="conditionEqIcon"
+                                                                  class="fa flaticon-equal conditionIcon"></span>
+                                                            <span>Egale à</span>
+                                                        </label>
+                                                        <input id="conditionNeq" value="NEQ" name="condition"
+                                                               type="radio">
+                                                        <label for="conditionNeq">
+                                                            <span id="conditionNeqIcon"
+                                                                  class="fa flaticon-different conditionIcon"></span>
+                                                            <span>Différente de</span>
+                                                        </label>
+                                                    </fieldset>
+                                                    <div id="forConditionWithValue">
+                                                        <h3 class="over-grey-h3 control-labe">Valeur</h3>
+
+                                                        <div class="row">
+                                                            <div class="input-group">
+                                                                <input id="receiveDataInput" name="receiveData"
+                                                                       value="0" class="form-control handler-mobile"
+                                                                       required="required" pattern="([0-9])+"
+                                                                       onchange="formUtils.resetValidation(this)"
+                                                                       oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner une valeur','Vous ne pouvez renseigner que des chiffres','NOT USED YET');"
+                                                                       type="number">
+                                                                <span id="dataTypeUnitlabel" class="input-group-addon">[UNIT]</span>
+                                                            </div>
+                                                            <div class="values-group customRadioCBContainer">
+                                                                <fieldset></fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-blocklyless validation">
+                                                        <h3>Valider</h3>
+                                                    </button>
+                                                </form>
+                                                <!-- !CONDITION SELECTION POPIN (mobileModalContainer) -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- !REGLE STEP 1 -->
+
+                                    <!-- CRON STEP 1 -->
+                                    <div id="cronStep1Container" class="step1Container">
+                                        <div class="row">
+                                            <div class="col-xs-12 scriptNameLabel-container">
+                                                <h3 class="scriptNameLabel">[SCRIPT NAME]</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h3 class="over-grey-h3 control-label">Planification</h3>
+
+                                                <h3 class="cronPlanificationLabel show-modal choose-moment modalContentTitle">
+                                                    <a href="#">
+                                                        <span>Choisir le moment</span>
+                                                        <span class="fa fa-angle-right viewMoreIcon"></span>
+                                                    </a>
+                                                </h3>
+
+                                                <!-- CRON PLANIFICATION POPIN -->
+                                                <div id="cronModal" class="mobileModalContainer">
+                                                    <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                        <h3 class="modalTitle">
+                                                            <span>Choisir quand</span>
+                                                            <span class="fa fa-times pull-right close-modal"></span>
+                                                        </h3>
+                                                    </div>
+                                                    <fieldset class="customRadioCBContainer selectDays">
+                                                        <input id="everyday" value="*" name="day-of-the-week"
+                                                               checked="checked" type="radio">
+                                                        <label for="everyday">Tous les jours</label>
+                                                        <input id="lundi" value="MON" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="lundi">Tous les lundis</label>
+                                                        <input id="mardi" value="TUE" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="mardi">Tous les mardis</label>
+                                                        <input id="mercredi" value="WED" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="mercredi">Tous les mercredis</label>
+                                                        <input id="jeudi" value="THU" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="jeudi">Tous les jeudis</label>
+                                                        <input id="vendredi" value="FRI" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="vendredi">Tous les vendredis</label>
+                                                        <input id="samedi" value="SAT" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="samedi">Tous les samedis</label>
+                                                        <input id="dimanche" value="SUN" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="dimanche">Tous les dimanches</label>
+                                                        <input id="lundi-vendredi" value="MON-FRI"
+                                                               name="day-of-the-week" type="radio">
+                                                        <label for="lundi-vendredi">Du lundi au vendredi</label>
+                                                        <input id="weekend" value="SAT-SUN" name="day-of-the-week"
+                                                               type="radio">
+                                                        <label for="weekend">Seulement le weekend</label>
+                                                    </fieldset>
+                                                    <fieldset class="selectHours styled-select">
+                                                        <select name="hours">
+                                                            <option value="default" disabled="disabled"
+                                                                    selected="selected">Heures (par défaut 12 h)
+                                                            </option>
+                                                            <option value="00">00 h</option>
+                                                            <option value="01">01 h</option>
+                                                            <option value="02">02 h</option>
+                                                            <option value="03">03 h</option>
+                                                            <option value="04">04 h</option>
+                                                            <option value="05">05 h</option>
+                                                            <option value="06">06 h</option>
+                                                            <option value="07">07 h</option>
+                                                            <option value="08">08 h</option>
+                                                            <option value="09">09 h</option>
+                                                            <option value="10">10 h</option>
+                                                            <option value="11">11 h</option>
+                                                            <option value="12">12 h</option>
+                                                            <option value="13">13 h</option>
+                                                            <option value="14">14 h</option>
+                                                            <option value="15">15 h</option>
+                                                            <option value="16">16 h</option>
+                                                            <option value="17">17 h</option>
+                                                            <option value="18">18 h</option>
+                                                            <option value="19">19 h</option>
+                                                            <option value="20">20 h</option>
+                                                            <option value="21">21 h</option>
+                                                            <option value="22">22 h</option>
+                                                            <option value="23">23 h</option>
+                                                        </select>
+                                                    </fieldset>
+                                                    <fieldset class="selectMinutes styled-select">
+                                                        <select name="minutes">
+                                                            <option value="default" disabled="disabled"
+                                                                    selected="selected">Minutes (par défaut 0 min)
+                                                            </option>
+                                                            <option value="00">00 min</option>
+                                                            <option value="01">01 min</option>
+                                                            <option value="02">02 min</option>
+                                                            <option value="03">03 min</option>
+                                                            <option value="04">04 min</option>
+                                                            <option value="05">05 min</option>
+                                                            <option value="06">06 min</option>
+                                                            <option value="07">07 min</option>
+                                                            <option value="08">08 min</option>
+                                                            <option value="09">09 min</option>
+                                                            <option value="10">10 min</option>
+                                                            <option value="11">11 min</option>
+                                                            <option value="12">12 min</option>
+                                                            <option value="13">13 min</option>
+                                                            <option value="14">14 min</option>
+                                                            <option value="15">15 min</option>
+                                                            <option value="16">16 min</option>
+                                                            <option value="17">17 min</option>
+                                                            <option value="18">18 min</option>
+                                                            <option value="19">19 min</option>
+                                                            <option value="20">20 min</option>
+                                                            <option value="21">21 min</option>
+                                                            <option value="22">22 min</option>
+                                                            <option value="23">23 min</option>
+                                                            <option value="24">24 min</option>
+                                                            <option value="25">25 min</option>
+                                                            <option value="26">26 min</option>
+                                                            <option value="27">27 min</option>
+                                                            <option value="28">28 min</option>
+                                                            <option value="29">29 min</option>
+                                                            <option value="30">30 min</option>
+                                                            <option value="31">31 min</option>
+                                                            <option value="32">32 min</option>
+                                                            <option value="33">33 min</option>
+                                                            <option value="34">34 min</option>
+                                                            <option value="35">35 min</option>
+                                                            <option value="36">36 min</option>
+                                                            <option value="37">37 min</option>
+                                                            <option value="38">38 min</option>
+                                                            <option value="39">39 min</option>
+                                                            <option value="40">40 min</option>
+                                                            <option value="41">41 min</option>
+                                                            <option value="42">42 min</option>
+                                                            <option value="43">43 min</option>
+                                                            <option value="44">44 min</option>
+                                                            <option value="45">45 min</option>
+                                                            <option value="46">46 min</option>
+                                                            <option value="47">47 min</option>
+                                                            <option value="48">48 min</option>
+                                                            <option value="49">49 min</option>
+                                                            <option value="50">50 min</option>
+                                                            <option value="51">51 min</option>
+                                                            <option value="52">52 min</option>
+                                                            <option value="53">53 min</option>
+                                                            <option value="54">54 min</option>
+                                                            <option value="55">55 min</option>
+                                                            <option value="56">56 min</option>
+                                                            <option value="57">57 min</option>
+                                                            <option value="58">58 min</option>
+                                                            <option value="59">59 min</option>
+                                                        </select>
+                                                    </fieldset>
+                                                    <button type="button" class="btn btn-blocklyless validation">
+                                                        <h3>Valider</h3>
+                                                    </button>
+                                                </div>
+                                                <!-- !CRON PLANIFICATION POPIN (mobileModalContainer) -->
+                                            </div>
+                                            <!-- form-group -->
+                                        </div>
+                                    </div>
+                                    <!-- !CRON STEP 1 -->
+                                </div>
+                                <!-- !STEP1 -->
+
+                                <!-- STEP 2 -->
+                                <h1 class="title" tabindex="-1" id="steps-uid-0-h-2"><span class="step-title">- Ajout d'une action</span>
+                                </h1>
+
+                                <div aria-hidden="true" style="display: none;" class="body"
+                                     aria-labelledby="steps-uid-0-h-2" role="tabpanel" id="steps-uid-0-p-2">
+                                    <!-- CRON & REGLE STEP 2 -->
+                                    <div id="step2">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h3 class="over-grey-h3">Quand</h3>
+
+                                                <h3 class="choose-moment modalContentTitle">
+                                                    <span></span>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <h3 class="over-grey-h3">Faire</h3>
+                                            </div>
+                                            <div class="col-xs-12 customRadioCBContainer cronActionContainer">
+                                                <div class="email-container">
+                                                    <input id="emailActionInput" value="EMAIL" name="actionTypeInput"
+                                                           type="radio">
+                                                    <label for="emailActionInput">
+                                                        <span class="fa flaticon-mail"></span>
+                                                        <span>Envoyer un email</span>
+                                                    </label>
+
+                                                    <div class="emailActionDetails actionDetails">
+                                                    </div>
+                                                </div>
+                                                <div class="sms-container">
+                                                    <input id="smsActionInput" value="SMS" name="actionTypeInput"
+                                                           type="radio">
+                                                    <label for="smsActionInput"><span class="fa flaticon-sms"></span>
+                                                        <span>Envoyer un sms</span>
+                                                    </label>
+
+                                                    <div class="smsActionDetails actionDetails">
+                                                    </div>
+                                                </div>
+                                                <div class="action-container">
+                                                    <input id="actionTypeInput" value="ACTION" name="actionTypeInput"
+                                                           type="radio">
+                                                    <label for="actionType"><span class="fa fa-flag"></span>
+                                                        <span>Effectuer une action</span>
+                                                    </label>
+
+                                                    <div class="actionActionDetails actionDetails">
+                                                    </div>
+                                                </div>
+                                                <div class="push-container">
+                                                    <input id="pushTypeInput" value="PUSH" name="actionTypeInput"
+                                                           type="radio">
+                                                    <label for="pushType">
+                                                        <span class="fa flaticon-notification"></span>
+                                                        <span>Envoyer une notification Push</span>
+                                                    </label>
+
+                                                    <div class="pushActionDetails actionDetails">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- NOTIFICATION PUSH -->
+                                        <form id="pushModal" class="mobileModalContainer customRadioCBContainer">
+                                            <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                <h3 class="modalTitle">
+                                                    <span>notification Push</span>
+                                                    <span class="fa fa-times pull-right close-modal"></span>
+                                                </h3>
+                                            </div>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="form-group col-xs-12">
+                                                        <fieldset class="toggle-container push-switch in">
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="form-group col-xs-12">
+                                                        <label for="pushNotificationTitle"
+                                                               class="col-sm-2 control-label">Titre de la
+                                                            notification</label>
+                                                        <input id="pushNotificationTitle" class="form-control"
+                                                               name="pushNotificationTitle" maxlength="300"
+                                                               onchange="formUtils.resetValidation(this)"
+                                                               placeholder="Titre...">
+                                                        <label for="pushContentTa" class="col-sm-2 control-label">Texte
+                                                            de la notification</label>
+                                                        <textarea id="pushContentTa" class="form-control"
+                                                                  name="pushContentTa" required="required"
+                                                                  maxlength="300"
+                                                                  onchange="formUtils.resetValidation(this)"
+                                                                  placeholder="Contenu..."
+                                                                  oninvalid="formUtils.onInvalid(this, 'Merci de renseigner le contenu de la notification');"></textarea>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <button class="btn btn-blocklyless validation">
+                                                <h3>Valider</h3>
+                                            </button>
+                                        </form>
+                                        <!-- !NOTIFICATION PUSH -->
+
+                                        <!-- SMS POPIN -->
+                                        <form id="smsModal" class="mobileModalContainer">
+                                            <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                <h3 class="modalTitle">
+                                                    <span>SMS</span>
+                                                    <span class="fa fa-times pull-right close-modal"></span>
+                                                </h3>
+                                            </div>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="form-group col-xs-12">
+                                                        <label for="smsNumberInput" class="control-label">Numéro du
+                                                            téléphone</label>
+                                                        <input id="smsNumberInput" name="smsNumberInput"
+                                                               required="required" pattern="0[6-7]([0-9]){8}"
+                                                               maxlength="10" onchange="formUtils.resetValidation(this)"
+                                                               class="form-control"
+                                                               placeholder="Saisir le numéro du destinataire"
+                                                               oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner un numéro de téléphone','Le numéro de téléphone doit contenir exactement 10 chiffres et commencer par 06 ou 07','NOT USED YET');"
+                                                               type="tel">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="form-group col-xs-12">
+                                                        <label for="smsContentTA"
+                                                               class="col-sm-2 control-label">Message</label>
+                                                        <textarea id="smsContentTA" class="form-control"
+                                                                  name="smsContentTA" required="required"
+                                                                  maxlength="450"
+                                                                  onchange="formUtils.resetValidation(this)"
+                                                                  placeholder="Saisir le contenu de SMS"
+                                                                  oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner votre message');"></textarea>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <button class="btn btn-blocklyless validation">
+                                                <h3>Valider</h3>
+                                            </button>
+                                        </form>
+                                        <!-- !SMS POPIN -->
+
+                                        <!-- EMAIL POPIN -->
+                                        <form id="emailModal" class="mobileModalContainer">
+                                            <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                <h3 class="modalTitle">
+                                                    <span>Mail</span>
+                                                    <span class="fa fa-times pull-right close-modal"></span>
+                                                </h3>
+                                            </div>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="form-group col-xs-12">
+                                                        <label for="emailDestInput"
+                                                               class="control-label">Destinataire</label>
+                                                        <input id="emailDestInput" name="emailDestInput"
+                                                               required="required"
+                                                               pattern="[a-zA-Z0-9.!#$%'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"
+                                                               onchange="formUtils.resetValidation(this)"
+                                                               class="form-control" placeholder="Saisir l'adresse mail"
+                                                               oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner un destinataire pour votre mail','Le format de votre adresse est incorrect','NOT USED YET');"
+                                                               type="email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label for="emailObjectTA"
+                                                           class="col-sm-2 control-label">Titre</label>
+                                                    <input id="emailObjectTA" name="emailContentTA" required="required"
+                                                           maxlength="1450" onchange="formUtils.resetValidation(this)"
+                                                           class="form-control" placeholder="Saisir l'objet du mail"
+                                                           oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner l\'objet de votre message');">
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label for="emailContentTA"
+                                                           class="col-sm-2 control-label">Contenu</label>
+                                                    <textarea id="emailContentTA" class="form-control"
+                                                              name="emailContentTA" required="required" maxlength="1450"
+                                                              onchange="formUtils.resetValidation(this)"
+                                                              placeholder="Saisir le corps du mail"
+                                                              oninvalid="formUtils.onInvalid(this, 'Vous devez renseigner le contenu de votre message');"></textarea>
+                                                </div>
+                                            </fieldset>
+                                            <button class="btn btn-blocklyless validation">
+                                                <h3>Valider</h3>
+                                            </button>
+                                        </form>
+                                        <!-- !EMAIL POPIN -->
+
+                                        <!-- ACTION POPIN -->
+                                        <form id="actionModal" class="mobileModalContainer customRadioCBContainer">
+                                            <div class="btn btn-blocklyless-top btn-blocklyless">
+                                                <h3 class="modalTitle">
+                                                    <span>Action</span>
+                                                    <span class="fa fa-times pull-right close-modal"></span>
+                                                </h3>
+                                            </div>
+                                            <div class="toggle-parent">
+                                                <button type="button" class="btn btn-blocklyless-choose toggle-trigger">
+                                                    <span>Choisir l'objet à actionner</span>
+                                                </button>
+                                                <fieldset class="toggle-container action-switch in">
+                                                </fieldset>
+                                                <fieldset class="action-switch-onOff">
+                                                    <input id="on" value="ON" name="onOffValue" type="radio">
+                                                    <label for="on">
+                                                        <span class="fa fa-angle-right"></span>
+                                                        <span>on</span>
+                                                    </label>
+                                                    <input id="off" value="OFF" name="onOffValue" checked="checked"
+                                                           type="radio">
+                                                    <label for="off">
+                                                        <span class="fa fa-angle-right"></span>
+                                                        <span>off</span>
+                                                    </label>
+                                                </fieldset>
+                                                <button type="button" class="btn btn-blocklyless validation">
+                                                    <h3>Valider</h3>
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <!-- !ACTION POPIN -->
+                                    </div>
+                                    <!-- !STEP 2 -->
+                                </div>
+                            </div>
+                            <div class="actions clearfix">
+                                <ul role="menu" aria-label="Pagination">
+                                    <li aria-disabled="true" class="disabled"><a style="visibility: hidden;"
+                                                                                 href="#previous" role="menuitem">Précédent</a>
+                                    </li>
+                                    <li aria-disabled="false" aria-hidden="false"><a href="#next" role="menuitem">Suivant</a>
+                                    </li>
+                                    <li aria-hidden="true" style="display: none;"><a href="#finish" role="menuitem">Sauvegarder</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL WINDOW (OVERRIDE CURRENT PAGE IF DISPLAYED) -->
+                <div id="modalWindow">
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="col-md-3 doca">
+                © <img alt="Hub-Numerique" src="files/hub-logo.png">
+            </div>
+            <div class="col-md-9">
+                <a target="_blank" href="https://www.dev.docapost.io/faq/" title="A propos &amp; FAQ">
+                    <span>A propos &amp; FAQ</span>
+                    <span class="fa flaticon-FAQ"></span>
+                </a>
+                <a href="#" class="help" title="Tutoriel">
+                    <span>Tutoriel</span>
+                    <span class="fa flaticon-tuto"></span>
+                </a>
+                <a target="_blank"
+                   href="https://groupelaposte-collaboratif.my.salesforce.com/_ui/core/chatter/groups/GroupProfilePage?g=0F9b0000000LaX9"
+                   title="Blog">
+                    <span>Blog</span>
+                    <span class="fa flaticon-communaute"></span>
+                </a>
+                <a target="_blank" href="mailto:support@docapost.io" title="Contact">
+                    <span>Contact</span>
+                    <span class="fa flaticon-lettre"></span>
+                </a>
+                <a target="_blank" href="https://www.dev.docapost.io/conditions_generales/" title="CGU">
+                    <span>CGU</span>
+                    <span class="fa flaticon-CGU"></span>
+                </a>
+                <a target="_blank" href="https://www.dev.docapost.io/mentions_legales/" title="Mentions légales">Mentions
+                    légales</a>
+                <a target="_blank" href="https://www.dev.docapost.io/index.php" title="Portail">Portail</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="mm-blocker" class="mm-slideout"></div>
+<iframe src="files/manifest.htm" style="display:none"></iframe>
+</body>
+</html>

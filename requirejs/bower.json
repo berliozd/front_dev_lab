@@ -1,0 +1,22 @@
+{
+  "name": "*",
+  "version": "0.0.0",
+  "homepage": "https://github.com/berliozd/front_dev_lab",
+  "authors": [
+    "Didier Berlioz <berliozd@gmail.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.20"
+  }
+}
