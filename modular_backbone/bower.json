@@ -1,0 +1,25 @@
+{
+  "name": "modular_backbone",
+  "version": "0.0.0",
+  "homepage": "https://github.com/berliozd/front_dev_lab",
+  "authors": [
+    "Didier Berlioz <berliozd@gmail.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.20",
+    "underscore": "~1.8.3"
+  }
+}

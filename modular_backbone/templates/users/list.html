@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<h2>user list</h2>
+<ul>
+  <% _.each(data, function(user) { %>
+    <li><%=user.get("name")%></li>
+  <% }) %>
+</ul>

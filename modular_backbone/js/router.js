@@ -7,8 +7,13 @@ define([
   'underscore',
   'backbone',
   'views/projects/list',
-  'views/users/list'
-], function($, _, Backbone, ProjectListView, UserListView){
+  'views/users/list',
+  'views/home/home',
+  'views/components/header',
+  'views/components/menu',
+  'views/components/footer',
+], function($, _, Backbone, ProjectListView, UserListView,
+            HomeView, HeaderView, MenuView, FooterView){
 
   //console.log('in router');
 
@@ -17,6 +22,8 @@ define([
       // Define some URL routes
       'projects': 'showProjects',
       'users': 'showUsers',
+      'home': 'showHome',
+
 
       // Default
       '*actions': 'defaultAction'
@@ -29,24 +36,34 @@ define([
     var app_router = new AppRouter;
 
     app_router.on('route:showProjects', function(){
-      console.log('showProjects');
-      // Call render on the module we loaded in via the dependency array
-      // 'views/projects/list'
       var projectListView = new ProjectListView();
       projectListView.render();
     });
-    // As above, call render on our loaded module
-    // 'views/users/list'
+
     app_router.on('route:showUsers', function(){
-      console.log('showUsers');
       var userListView = new UserListView();
       userListView.render();
     });
-    app_router.on('route:defaultAction', function(actions){
-      console.log('defaultAction');
-      // We have no matching route, lets just log what the URL was
-      console.log('No route:', actions);
+
+    app_router.on('route:showHome', function(){
+      var homeView = new HomeView();
+      homeView.render();
     });
+
+    app_router.on('route:defaultAction', function(){
+      var homeView = new HomeView();
+      homeView.render();
+    });
+
+    // Render common views
+    var menuView = new MenuView();
+    menuView.render();
+    var headerView = new HeaderView();
+    headerView.render();
+    var footerView = new FooterView();
+    footerView.render();
+
+
     Backbone.history.start();
   };
 
