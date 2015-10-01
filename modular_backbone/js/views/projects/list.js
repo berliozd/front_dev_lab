@@ -1,12 +1,13 @@
 /**
  * Created by Berlioz on 28/09/2015.
  */
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/projects/list.html'
-], function ($, _, Backbone, projectsListTemplate) {
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+Backbone.$ = $;
+var projectsListTemplate = require('../../../templates/projects/list.html');
+
+module.exports = function ($, _, Backbone, projectsListTemplate) {
 
   var ProjectsListView = Backbone.View.extend({
 
@@ -22,4 +23,4 @@ define([
   });
 
   return ProjectsListView;
-});
+}($, _, Backbone, projectsListTemplate);

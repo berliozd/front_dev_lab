@@ -2,13 +2,14 @@
  * Created by Berlioz on 28/09/2015.
  */
 // Filename: app.js
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'router', // Request router.js
-], function($, _, Backbone, Router){
-  var initialize = function(){
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+Backbone.$ = $;
+var Router = require('./router');
+
+module.exports = function ($, _, Backbone, Router) {
+  var initialize = function () {
 
     console.log('in app');
     console.log(Router);
@@ -20,4 +21,4 @@ define([
   return {
     initialize: initialize
   };
-});
+}($, _, Backbone, Router);

@@ -1,13 +1,13 @@
 /**
  * Created by Berlioz on 28/09/2015.
  */
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/users/list.html',
-  'collections/userList'
-], function ($, _, Backbone, usersListTemplate, UserList) {
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+var usersListTemplate = '../../../templates/users/list.html';
+var UserList = require('../../collections/userList');
+
+module.exports = function ($, _, Backbone, usersListTemplate, UserList) {
 
   var UsersListView = Backbone.View.extend({
 
@@ -31,4 +31,4 @@ define([
   });
 
   return UsersListView;
-});
+}($, _, Backbone, usersListTemplate, UserList);

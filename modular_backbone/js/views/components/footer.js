@@ -1,12 +1,13 @@
 /**
  * Created by Berlioz on 28/09/2015.
  */
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/components/footer.html'
-], function ($, _, Backbone, footerTemplate) {
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+Backbone.$ = $;
+var footerTemplate = require('../../../templates/components/footer.html');
+
+module.exports = function ($, _, Backbone, footerTemplate) {
 
   var FooterView = Backbone.View.extend({
 
@@ -21,4 +22,4 @@ define([
   });
 
   return FooterView;
-});
+}($, _, Backbone, footerTemplate);

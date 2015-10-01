@@ -1,12 +1,13 @@
 /**
  * Created by Berlioz on 28/09/2015.
  */
-define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/components/header.html'
-], function ($, _, Backbone, headerTemplate) {
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+Backbone.$ = $;
+var headerTemplate = require('../../../templates/components/header.html');
+
+module.exports = function ($, _, Backbone, headerTemplate) {
 
   var HeaderView = Backbone.View.extend({
 
@@ -15,10 +16,10 @@ define([
     render: function () {
       var data = {};
       var compiledTemplate = _.template(headerTemplate, data);
-      this.$el.html(compiledTemplate);
+      this.$el.html(headerTemplate);
     }
 
   });
 
   return HeaderView;
-});
+}($, _, Backbone, headerTemplate);
