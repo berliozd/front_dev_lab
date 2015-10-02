@@ -11,8 +11,9 @@
   "devDependencies": {
     "browserify": "latest",
     "gulp": "latest",
-    "gulp-browserify": "^0.5.1",
-    "stringify": "latest"
+    "gulp-browserify": "latest",
+    "stringify": "latest",
+    "gulp-watch": "latest"
   },
   "dependencies": {
     "jquery": "latest",

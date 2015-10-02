@@ -1,6 +1,6 @@
 <h2>user list</h2>
 <ul>
   <% _.each(data, function(user) { %>
-    <li><%=user.get("name")%></li>
+    <li>Prénom : <%=user.get("name")%>, Age : <%=user.get("age")%></li>
   <% }) %>
 </ul>

@@ -5,6 +5,6 @@
 var $ = require('jquery');
 var app = require('./app');
 
-(function (app) {
+$(document).ready(function () {
   app.initialize();
-})(app);
+});

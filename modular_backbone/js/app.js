@@ -8,7 +8,7 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 var Router = require('./router');
 
-module.exports = function ($, _, Backbone, Router) {
+module.exports = (function ($, _, Backbone, Router) {
   var initialize = function () {
 
     console.log('in app');
@@ -21,4 +21,4 @@ module.exports = function ($, _, Backbone, Router) {
   return {
     initialize: initialize
   };
-}($, _, Backbone, Router);
+})($, _, Backbone, Router);

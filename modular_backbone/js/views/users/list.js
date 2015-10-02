@@ -4,31 +4,46 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-var usersListTemplate = '../../../templates/users/list.html';
-var UserList = require('../../collections/userList');
+var tpl = require('../../../templates/users/list.html');
+var UserListCollections = require('../../collections/userList');
+var HeaderView = require('../../views/components/header');
+var MenuView = require('../../views/components/menu');
+var FooterView = require('../../views/components/footer');
 
-module.exports = function ($, _, Backbone, usersListTemplate, UserList) {
+module.exports = function ($, _, Backbone, tpl, UserListCollections, HeaderView, FooterView, MenuView) {
 
   var UsersListView = Backbone.View.extend({
 
-    el: $('#container'),
+    el: '#container',
 
     render: function () {
 
-      var userList = new UserList();
+      // Render common views
+      var menuView = new MenuView();
+      menuView.render();
+      var headerView = new HeaderView();
+      headerView.render();
+      var footerView = new FooterView();
+      footerView.render();
+
+      var userListColl = new UserListCollections();
       var that = this;
 
-      userList.fetch({
+      userListColl.fetch({
 
         success: function (users) {
-          var tpl = _.template(usersListTemplate);
-          that.$el.html(tpl({data: users.models}));
+          console.log('fetch success');
+          var compiledTpl = _.template(tpl);
+          that.$el.html(compiledTpl({data: users.models}));
         }
 
       });
-    }
+    },
 
+    initialize : function() {
+
+    }
   });
 
   return UsersListView;
-}($, _, Backbone, usersListTemplate, UserList);
+}($, _, Backbone, tpl, UserListCollections, HeaderView, FooterView, MenuView);

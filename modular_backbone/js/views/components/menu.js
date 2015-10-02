@@ -7,11 +7,11 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 var menuTemplate = require('../../../templates/components/menu.html');
 
-module.exports = function ($, _, Backbone, menuTemplate) {
+module.exports = (function ($, _, Backbone, menuTemplate) {
 
   var MenuView = Backbone.View.extend({
 
-    el: $('aside'),
+    el: '#menu',
 
     render: function () {
       console.log('in MenuView rendering in ' + this.$el);
@@ -23,4 +23,4 @@ module.exports = function ($, _, Backbone, menuTemplate) {
   });
 
   return MenuView;
-}($, _, Backbone, menuTemplate);
+})($, _, Backbone, menuTemplate);

@@ -4,23 +4,34 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
-var projectsListTemplate = require('../../../templates/projects/list.html');
+var tpl = require('../../../templates/projects/list.html');
+var HeaderView = require('../../views/components/header');
+var MenuView = require('../../views/components/menu');
+var FooterView = require('../../views/components/footer');
 
-module.exports = function ($, _, Backbone, projectsListTemplate) {
+module.exports = function ($, _, Backbone, tpl, HeaderView, FooterView, MenuView) {
 
   var ProjectsListView = Backbone.View.extend({
 
-    el: $('#container'),
+    el: '#container',
 
     render: function () {
+
+      // Render common views
+      var menuView = new MenuView();
+      menuView.render();
+      var headerView = new HeaderView();
+      headerView.render();
+      var footerView = new FooterView();
+      footerView.render();
+
       var data = {};
 
-      var compiledTemplate = _.template(projectsListTemplate, data);
+      var compiledTemplate = _.template(tpl, data);
       this.$el.html(compiledTemplate);
     }
 
   });
 
   return ProjectsListView;
-}($, _, Backbone, projectsListTemplate);
+}($, _, Backbone, tpl, HeaderView, FooterView, MenuView);

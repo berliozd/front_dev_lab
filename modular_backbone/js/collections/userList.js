@@ -1,12 +1,9 @@
 /**
  * Created by Berlioz on 28/09/2015.
  */
-var $ = require('jquery');
-var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
 
-module.exports = function ($, _, Backbone) {
+module.exports = function (Backbone) {
 
   var UserList = Backbone.Collection.extend({
 
@@ -15,4 +12,4 @@ module.exports = function ($, _, Backbone) {
   });
 
   return UserList;
-}($, _, Backbone);
+}(Backbone);

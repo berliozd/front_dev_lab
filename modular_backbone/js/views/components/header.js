@@ -11,12 +11,13 @@ module.exports = function ($, _, Backbone, headerTemplate) {
 
   var HeaderView = Backbone.View.extend({
 
-    el: $('header'),
+    el: 'header',
 
     render: function () {
       var data = {};
       var compiledTemplate = _.template(headerTemplate, data);
       this.$el.html(headerTemplate);
+      return this;
     }
 
   });

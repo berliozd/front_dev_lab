@@ -5,15 +5,12 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
 var ProjectListView = require('./views/projects/list');
 var UserListView = require('./views/users/list');
 var HomeView = require('./views/home/home');
-var HeaderView = require('./views/components/header');
-var MenuView = require('./views/components/menu');
-var FooterView = require('./views/components/footer');
 
-module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeView, HeaderView, MenuView, FooterView) {
+
+module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeView) {
 
   //console.log('in router');
 
@@ -53,15 +50,6 @@ module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeVi
       homeView.render();
     });
 
-    // Render common views
-    var menuView = new MenuView();
-    menuView.render();
-    var headerView = new HeaderView();
-    headerView.render();
-    var footerView = new FooterView();
-    footerView.render();
-
-
     Backbone.history.start();
   };
 
@@ -69,4 +57,4 @@ module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeVi
     initialize: initialize
   };
 
-}($, _, Backbone, ProjectListView, UserListView, HomeView, HeaderView, MenuView, FooterView);
+}($, _, Backbone, ProjectListView, UserListView, HomeView);
