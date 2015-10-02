@@ -10,10 +10,14 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "latest",
-    "gulp": "latest",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
     "gulp-browserify": "latest",
-    "stringify": "latest",
-    "gulp-watch": "latest"
+    "gulp-minify-css": "^1.2.1",
+    "gulp-sass": "latest",
+    "gulp-uglify": "^1.4.1",
+    "gulp-watch": "latest",
+    "stringify": "latest"
   },
   "dependencies": {
     "backbone": "latest",
