@@ -16,8 +16,9 @@
     "gulp-watch": "latest"
   },
   "dependencies": {
-    "jquery": "latest",
     "backbone": "latest",
+    "bootstrap": "^3.3.5",
+    "jquery": "latest",
     "underscore": "latest"
   }
 }
