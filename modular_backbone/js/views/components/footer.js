@@ -4,7 +4,6 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
 var footerTemplate = require('../../../templates/components/footer.html');
 
 module.exports = function ($, _, Backbone, footerTemplate) {
@@ -14,13 +13,12 @@ module.exports = function ($, _, Backbone, footerTemplate) {
     el: 'footer',
 
     render: function () {
-      var data = {};
-      var compiledTemplate = _.template(footerTemplate, data);
-      this.$el.html(compiledTemplate);
+      this.$el.html(footerTemplate);
       return this;
     }
 
   });
 
   return FooterView;
+
 }($, _, Backbone, footerTemplate);

@@ -4,7 +4,6 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
 var headerTemplate = require('../../../templates/components/header.html');
 
 module.exports = function ($, _, Backbone, headerTemplate) {
@@ -14,8 +13,6 @@ module.exports = function ($, _, Backbone, headerTemplate) {
     el: 'header',
 
     render: function () {
-      var data = {};
-      var compiledTemplate = _.template(headerTemplate, data);
       this.$el.html(headerTemplate);
       return this;
     }
@@ -23,4 +20,5 @@ module.exports = function ($, _, Backbone, headerTemplate) {
   });
 
   return HeaderView;
+
 }($, _, Backbone, headerTemplate);

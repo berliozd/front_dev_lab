@@ -4,7 +4,6 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = $;
 var menuTemplate = require('../../../templates/components/menu.html');
 
 module.exports = (function ($, _, Backbone, menuTemplate) {
@@ -14,13 +13,12 @@ module.exports = (function ($, _, Backbone, menuTemplate) {
     el: '#menu',
 
     render: function () {
-      console.log('in MenuView rendering in ' + this.$el);
-      var data = {};
-      var compiledTemplate = _.template(menuTemplate, data);
-      this.$el.html(compiledTemplate);
+      this.$el.html(menuTemplate);
+      return this;
     }
 
   });
 
   return MenuView;
+
 })($, _, Backbone, menuTemplate);

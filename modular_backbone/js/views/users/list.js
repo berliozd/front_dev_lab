@@ -6,25 +6,15 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 var tpl = require('../../../templates/users/list.html');
 var UserListCollections = require('../../collections/userList');
-var HeaderView = require('../../views/components/header');
-var MenuView = require('../../views/components/menu');
-var FooterView = require('../../views/components/footer');
+var Page = require('../page');
 
-module.exports = function ($, _, Backbone, tpl, UserListCollections, HeaderView, FooterView, MenuView) {
+module.exports = function ($, _, Backbone, tpl, UserListCollections) {
 
-  var UsersListView = Backbone.View.extend({
-
-    el: '#container',
+  var UsersListView = Page.extend({
 
     render: function () {
 
-      // Render common views
-      var menuView = new MenuView();
-      menuView.render();
-      var headerView = new HeaderView();
-      headerView.render();
-      var footerView = new FooterView();
-      footerView.render();
+      console.log('render users list view');
 
       var userListColl = new UserListCollections();
       var that = this;
@@ -40,10 +30,8 @@ module.exports = function ($, _, Backbone, tpl, UserListCollections, HeaderView,
       });
     },
 
-    initialize : function() {
-
-    }
   });
 
   return UsersListView;
-}($, _, Backbone, tpl, UserListCollections, HeaderView, FooterView, MenuView);
+
+}($, _, Backbone, tpl, UserListCollections);
