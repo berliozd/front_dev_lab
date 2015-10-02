@@ -2,15 +2,13 @@
  * Created by Berlioz on 28/09/2015.
  */
 // Filename: router.js
-var $ = require('jquery');
-var _ = require('underscore');
 var Backbone = require('backbone');
 var ProjectListView = require('./views/projects/list');
 var UserListView = require('./views/users/list');
 var HomeView = require('./views/home/home');
 
 
-module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeView) {
+module.exports = function (Backbone, ProjectListView, UserListView, HomeView) {
 
   //console.log('in router');
 
@@ -57,4 +55,4 @@ module.exports = function ($, _, Backbone, ProjectListView, UserListView, HomeVi
     initialize: initialize
   };
 
-}($, _, Backbone, ProjectListView, UserListView, HomeView);
+}(Backbone, ProjectListView, UserListView, HomeView);
