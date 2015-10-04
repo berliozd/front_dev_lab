@@ -13,7 +13,6 @@ module.exports = function (Backbone, HeaderView, FooterView, MenuView) {
     el: '#container',
 
     initialize: function () {
-      console.log('page initialize');
       // Render common views
       var menuView = new MenuView();
       menuView.render();

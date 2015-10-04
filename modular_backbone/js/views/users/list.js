@@ -10,25 +10,25 @@ var Page = require('../page');
 
 module.exports = function ($, _, Backbone, tpl, UserListCollections) {
 
+  var userListColl = new UserListCollections();
+
   var UsersListView = Page.extend({
 
+    models: userListColl,
+
     render: function () {
-
-      console.log('render users list view');
-
-      var userListColl = new UserListCollections();
-      var that = this;
-
-      userListColl.fetch({
-
-        success: function (users) {
-          console.log('fetch success');
-          var compiledTpl = _.template(tpl);
-          that.$el.html(compiledTpl({data: users.models}));
-        }
-
-      });
+      var compiledTpl = _.template(tpl);
+      this.$el.html(compiledTpl({data: this.models.models}));
     },
+
+    initialize : function() {
+      (new Page()).initialize();
+
+      this.listenTo(this.models, 'sync', this.render);
+
+      this.models.fetch();
+    },
+
 
   });
 
